@@ -7,20 +7,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: #f7f6f4;
       color: #111;
       min-height: 100vh;
     }
- 
+
     .page {
       max-width: 1000px;
       margin: 0 auto;
       padding: 80px 28px 100px;
     }
- 
+
     /* ── HEADER ── */
     .header {
       display: flex;
@@ -28,22 +28,28 @@
       align-items: center;
       margin-bottom: 64px;
     }
- 
+
     .logo-line {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 26px;
     }
- 
+
     .logo-circle {
-      width: 36px; height: 36px;
-      background: #111;
+      width: 46px; height: 46px;
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.95rem;
+      overflow: hidden;
+      border: 2px solid #111;
+      flex-shrink: 0;
     }
- 
+
+    .logo-circle img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .logo-wordmark {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
@@ -52,13 +58,13 @@
       text-transform: uppercase;
       color: #111;
     }
- 
+
     .header-rule {
       width: 40px; height: 2px;
       background: #111;
       margin-bottom: 22px;
     }
- 
+
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.9rem, 5vw, 3.1rem);
@@ -69,30 +75,30 @@
       line-height: 1.18;
       margin-bottom: 12px;
     }
- 
+
     .section-title em {
       font-style: italic;
       font-weight: 400;
     }
- 
+
     .section-sub {
       font-size: 0.82rem;
       font-weight: 300;
       color: #888;
       letter-spacing: 0.05em;
     }
- 
+
     /* ── GRID ── */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
- 
+
     @media (max-width: 640px) {
       .cards-grid { grid-template-columns: 1fr; }
     }
- 
+
     /* ── CARD ── */
     .card {
       background: #fff;
@@ -103,23 +109,23 @@
       flex-direction: column;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
- 
+
     .card:hover {
       box-shadow: 0 12px 40px rgba(0,0,0,0.09);
       transform: translateY(-4px);
     }
- 
+
     .card.featured {
       border-color: #111;
     }
- 
+
     /* ── IMAGE ── */
     .card-img-wrap {
       height: 420px;
       overflow: hidden;
       background: #111;
     }
- 
+
     .card-img-wrap img {
       width: 100%; height: 100%;
       object-fit: cover;
@@ -127,17 +133,17 @@
       transition: transform 0.55s ease;
       display: block;
     }
- 
+
     /* Full-fit for local uploaded images */
     .card-img-wrap img.full-fit {
       object-fit: contain;
       object-position: center;
     }
- 
+
     .card:hover .card-img-wrap img {
       transform: scale(1.04);
     }
- 
+
     /* ── BODY ── */
     .card-body {
       padding: 26px 26px 28px;
@@ -145,14 +151,14 @@
       flex-direction: column;
       flex: 1;
     }
- 
+
     .tier-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 4px;
     }
- 
+
     .tier-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.65rem;
@@ -161,7 +167,7 @@
       color: #111;
       line-height: 1;
     }
- 
+
     .popular-tag {
       display: none;
       font-size: 0.58rem;
@@ -175,7 +181,7 @@
       margin-top: 3px;
     }
     .card.featured .popular-tag { display: block; }
- 
+
     .tier-label {
       font-size: 0.62rem;
       font-weight: 400;
@@ -184,14 +190,14 @@
       color: #bbb;
       margin-bottom: 14px;
     }
- 
+
     .thin-rule {
       width: 100%; height: 1px;
       background: #ececec;
       margin-bottom: 16px;
     }
     .card.featured .thin-rule { background: #111; }
- 
+
     /* ── PRICE ── */
     .price-row {
       display: flex;
@@ -199,14 +205,14 @@
       gap: 3px;
       margin-bottom: 16px;
     }
- 
+
     .price-cur {
       font-size: 0.72rem;
       font-weight: 400;
       color: #888;
       letter-spacing: 0.06em;
     }
- 
+
     .price-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.4rem;
@@ -214,13 +220,13 @@
       color: #111;
       line-height: 1;
     }
- 
+
     .price-per {
       font-size: 0.7rem;
       color: #bbb;
       font-weight: 300;
     }
- 
+
     /* ── DESCRIPTION PARAGRAPH ── */
     .features-text {
       font-size: 0.78rem;
@@ -231,7 +237,7 @@
       margin-bottom: 14px;
       flex: 1;
     }
- 
+
     .duration-line {
       font-size: 0.68rem;
       font-weight: 400;
@@ -240,7 +246,7 @@
       text-transform: uppercase;
       margin-bottom: 20px;
     }
- 
+
     /* ── BUTTON ── */
     .btn-book {
       display: block;
@@ -257,7 +263,7 @@
       border-radius: 2px;
       transition: all 0.22s ease;
     }
- 
+
     .card:not(.featured) .btn-book {
       background: transparent;
       border: 1px solid #ccc;
@@ -268,7 +274,7 @@
       border-color: #111;
       color: #fff;
     }
- 
+
     .card.featured .btn-book {
       background: #111;
       border: 1px solid #111;
@@ -278,7 +284,7 @@
       background: #333;
       border-color: #333;
     }
- 
+
     /* ── FOOTER ── */
     .footer-note {
       text-align: center;
@@ -288,7 +294,7 @@
       color: #c0c0c0;
       letter-spacing: 0.08em;
     }
- 
+
     @media (max-width: 480px) {
       .page { padding: 52px 16px 68px; }
       .card-body { padding: 20px 18px 22px; }
@@ -296,21 +302,21 @@
   </style>
 </head>
 <body>
- 
+
 <div class="page">
- 
+
   <header class="header">
     <div class="logo-line">
-      <div class="logo-circle">✂</div>
+      <div class="logo-circle"><img src="profile.jpg" alt="Kelly the Artist"/></div>
       <div class="logo-wordmark">Kelly the Artist</div>
     </div>
     <div class="header-rule"></div>
     <h2 class="section-title">Choose Your <em>Grooming Experience</em></h2>
     <p class="section-sub">Professional cuts &amp; precision grooming, tailored to you.</p>
   </header>
- 
+
   <div class="cards-grid">
- 
+
     <!-- BASIC CUT -->
     <div class="card">
       <div class="card-img-wrap">
@@ -335,7 +341,7 @@
         <a href="https://calendar.app.google/GT8eiMx9bkhDjaRr9" target="_blank" class="btn-book">Book Now</a>
       </div>
     </div>
- 
+
     <!-- PREMIUM GROOMING -->
     <div class="card featured">
       <div class="card-img-wrap">
@@ -361,12 +367,12 @@
         <a href="https://calendar.app.google/GT8eiMx9bkhDjaRr9" target="_blank" class="btn-book">Book Now</a>
       </div>
     </div>
- 
+
   </div>
- 
+
   <p class="footer-note">Walk-ins welcome &nbsp;·&nbsp; Appointments recommended &nbsp;·&nbsp; Book online above</p>
- 
+
 </div>
- 
+
 </body>
 </html>
